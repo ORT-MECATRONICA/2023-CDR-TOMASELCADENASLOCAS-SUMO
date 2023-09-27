@@ -1,9 +1,3 @@
-//BLUETOOTH
-#include <SoftwareSerial.h>   // Incluimos la librería  SoftwareSerial  
-SoftwareSerial BT(A0, A1);   // Definimos los pines RX y TX del Arduino conectados al Bluetooth
-
-char leerBluetooth;
-
 //MOTORES
 #define M1_PWM  5
 #define M2_PWM  10
@@ -17,26 +11,29 @@ char leerBluetooth;
 #define IR_DERECHA_CENTRO   4
 #define IR_IZQUIERDA_CENTRO 2
 #define IR_IZQUIERDA        3
-#define IR_ARRIBA           12
 
-#define LED                 11
+#define BOTON_IZQUIERDA    11
+#define BOTON_DERECHA      A1   
+#define BOTON_ARRANQUE     A0
 
-bool infrarrojo[5] = {
+bool infrarrojo[4] = {
   true,
   true,
   true,
   true,
-  true
 };
 #define DERECHA          0
 #define DERECHA_CENTRO   1
 #define IZQUIERDA_CENTRO 2
 #define IZQUIERDA        3
-#define ARRIBA           4
+
 
 //CNY70
 #define CNY_70_IZQUIERDA  A5
 #define CNY_70_DERECHA    A4
+#define AMBOS             4
+#define NADA              5
+#define ADELANTE          6
 
 int umbral_izquierda = 322;
 int umbral_derecha = 470;
@@ -59,7 +56,6 @@ String estrategia;
 
 void setup() {
 
-  BT.begin(9600);       // Inicializamos el puerto serie BT (Para Modo AT 2)
 
   pinMode(M1_AD, OUTPUT);
   pinMode(M1_AT, OUTPUT);
@@ -70,9 +66,12 @@ void setup() {
   pinMode(IR_DERECHA_CENTRO, INPUT);
   pinMode(IR_IZQUIERDA_CENTRO, INPUT);
   pinMode(IR_IZQUIERDA, INPUT);
-  pinMode(IR_ARRIBA, INPUT);
+
+  pinMode(BOTON_IZQUIERDA, INPUT_PULLUP);
+  pinMode(BOTON_DERECHA, INPUT_PULLUP);
+  pinMode(BOTON_ARRANQUE, INPUT_PULLUP);
   
-  pinMode(LED, OUTPUT);
+
   Serial.begin(9600);
 }
 
@@ -84,5 +83,6 @@ void loop() {
   //Serial.println(contador);
   maquinaPrincipal();
   //adelante(100, 100);
+  //Serial.println(digitalRead(IR_IZQUIERDA));
   //secuencia(); 
 }
