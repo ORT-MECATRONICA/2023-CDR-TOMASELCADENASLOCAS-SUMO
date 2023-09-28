@@ -3,14 +3,14 @@
 #define M2_PWM  10
 #define M1_AD   8
 #define M1_AT   6
-#define M2_AD   7
-#define M2_AT   9
+#define M2_AD   9
+#define M2_AT   7
 
 //INFRARROJO
-#define IR_DERECHA          13
-#define IR_DERECHA_CENTRO   4
-#define IR_IZQUIERDA_CENTRO 2
-#define IR_IZQUIERDA        3
+#define IR_IZQUIERDA_CENTRO         13
+#define IR_DERECHA_CENTRO   4 //PD4
+#define IR_IZQUIERDA         2 //PD2
+#define IR_DERECHA       3 //PD3
 
 #define BOTON_IZQUIERDA    11
 #define BOTON_DERECHA      A1   
@@ -81,8 +81,10 @@ void loop() {
   //contadorTiempo();
   //adelante(100, 100);
   //Serial.println(contador);
-  maquinaPrincipal();
-  //adelante(100, 100);
+  //maquinaPrincipal();
+  //pruebas();
+  
+  adelante(100, 100);
   //Serial.println(digitalRead(IR_IZQUIERDA));
   //secuencia(); 
 }
