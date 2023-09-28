@@ -1,19 +1,19 @@
 //MOTORES
-#define M1_PWM  5
-#define M2_PWM  10
-#define M1_AD   8
-#define M1_AT   6
-#define M2_AD   9
-#define M2_AT   7
+#define M2_PWM  5
+#define M1_PWM  10
+#define M2_AD   8
+#define M2_AT   6
+#define M1_AD   9
+#define M1_AT   7
 
 //INFRARROJO
-#define IR_IZQUIERDA_CENTRO         13
-#define IR_DERECHA_CENTRO   4 //PD4
-#define IR_IZQUIERDA         2 //PD2
-#define IR_DERECHA       3 //PD3
+#define IR_IZQUIERDA_CENTRO         4
+#define IR_DERECHA_CENTRO   13
+#define IR_IZQUIERDA         2
+#define IR_DERECHA       3
 
-#define BOTON_IZQUIERDA    11
-#define BOTON_DERECHA      A1   
+#define BOTON_IZQUIERDA    A1
+#define BOTON_DERECHA      11
 #define BOTON_ARRANQUE     A0
 
 bool infrarrojo[4] = {
@@ -70,21 +70,24 @@ void setup() {
   pinMode(BOTON_IZQUIERDA, INPUT_PULLUP);
   pinMode(BOTON_DERECHA, INPUT_PULLUP);
   pinMode(BOTON_ARRANQUE, INPUT_PULLUP);
-  
+
 
   Serial.begin(9600);
 }
 
 void loop() {
   //digitalWrite(LED, HIGH);
-  
+
   //contadorTiempo();
   //adelante(100, 100);
   //Serial.println(contador);
-  //maquinaPrincipal();
+  maquinaPrincipal();
   //pruebas();
+
+  //adelante(100, 100);
+  //Serial.println(digitalRead(IR_DERECHA_CENTRO));
+  //secuencia();
+
   
-  adelante(100, 100);
-  //Serial.println(digitalRead(IR_IZQUIERDA));
-  //secuencia(); 
+
 }

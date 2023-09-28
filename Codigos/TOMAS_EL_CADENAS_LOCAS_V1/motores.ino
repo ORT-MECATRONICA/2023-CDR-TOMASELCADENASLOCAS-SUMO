@@ -9,6 +9,17 @@ void adelante(int pwmDerecha, int pwmIzquierda) {
   digitalWrite(M2_AT, LOW);
 
 }
+void parar(int pwmDerecha, int pwmIzquierda) {
+
+  analogWrite(M1_PWM, map(pwmDerecha, 0, 100, 0, 255));
+  analogWrite(M2_PWM, map(pwmIzquierda, 0, 100, 0, 255));
+
+  digitalWrite(M1_AD, HIGH);
+  digitalWrite(M1_AT, HIGH);
+  digitalWrite(M2_AD, HIGH);
+  digitalWrite(M2_AT, HIGH);
+
+}
 
 void izquierda(int pwmDerecha, int pwmIzquierda) {
 
